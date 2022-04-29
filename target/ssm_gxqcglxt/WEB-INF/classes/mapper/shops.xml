@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.ShopsDAO">
+	<resultMap type="shops" id="shopsMap">
+		<id property="shopsid" column="shopsid" />
+		<result property="shopsname" column="shopsname" />
+		<result property="manager" column="manager" />
+		<result property="addtime" column="addtime" />
+		<result property="contact" column="contact" />
+		<result property="address" column="address" />
+		<result property="memo" column="memo" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertShops" parameterType="shops">  
+		insert into shops(shopsid  , shopsname  , manager  , addtime  , contact  , address  , memo ) values(#{shopsid}  , #{shopsname}   , #{manager}   , #{addtime}   , #{contact}   , #{address}   , #{memo} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+		<update id="updateShops" parameterType="shops">
+update shops set  shopsname=#{shopsname}  , manager=#{manager}  , addtime=#{addtime}  , contact=#{contact}  , address=#{address}  , memo=#{memo}  where shopsid=#{shopsid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteShops" parameterType="String">
+		delete from shops where shopsid = #{shopsid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置  -->
+	<select id="getAllShops" resultMap="shopsMap">
+select a.*  from shops a  where 1=1  order by shopsid desc
+	</select>
+
+	<!-- 按主键查询 DAO通过id调用此配置  -->
+	<select id="getShopsById" parameterType="String" resultMap="shopsMap">
+select a.*  from shops a  where 1=1 and shopsid=#{shopsid} order by shopsid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置  -->
+	<select id="getShopsByCond" parameterType="shops" resultMap="shopsMap">
+select a.*  from shops a  where 1=1 
+		<if test="shopsname != null and '' != shopsname">
+			and a.shopsname = #{shopsname}  
+		</if>
+		<if test="manager != null and '' != manager">
+			and a.manager = #{manager}  
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime = #{addtime}  
+		</if>
+		<if test="contact != null and '' != contact">
+			and a.contact = #{contact}  
+		</if>
+		<if test="address != null and '' != address">
+			and a.address = #{address}  
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo = #{memo}  
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置  -->
+	<select id="getShopsByLike" parameterType="shops" resultMap="shopsMap">
+select a.*  from shops a  where 1=1 
+		<if test="shopsname != null and '' != shopsname">
+			and a.shopsname like CONCAT('%', CONCAT(#{shopsname}, '%'))
+		</if>
+		<if test="manager != null and '' != manager">
+			and a.manager like CONCAT('%', CONCAT(#{manager}, '%'))
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+		</if>
+		<if test="contact != null and '' != contact">
+			and a.contact like CONCAT('%', CONCAT(#{contact}, '%'))
+		</if>
+		<if test="address != null and '' != address">
+			and a.address like CONCAT('%', CONCAT(#{address}, '%'))
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo like CONCAT('%', CONCAT(#{memo}, '%'))
+		</if>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

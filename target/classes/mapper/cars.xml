@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.CarsDAO">
+	<resultMap type="cars" id="carsMap">
+		<id property="carsid" column="carsid" />
+		<result property="carsno" column="carsno" />
+		<result property="image" column="image" />
+		<result property="price" column="price" />
+		<result property="cateid" column="cateid" />
+		<result property="areaxid" column="areaxid" />
+		<result property="shopsid" column="shopsid" />
+		<result property="recommend" column="recommend" />
+		<result property="special" column="special" />
+		<result property="color" column="color" />
+		<result property="workdate" column="workdate" />
+		<result property="pailiang" column="pailiang" />
+		<result property="youhao" column="youhao" />
+		<result property="addtime" column="addtime" />
+		<result property="hits" column="hits" />
+		<result property="status" column="status" />
+		<result property="contents" column="contents" />
+		<result property="catename" column="catename" />
+		<result property="areaxname" column="areaxname" />
+		<result property="shopsname" column="shopsname" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertCars" parameterType="cars">
+		insert into cars(carsid , carsno , image , price , cateid , areaxid , shopsid , recommend , special , color ,
+		workdate , pailiang , youhao , addtime , hits , status
+		, contents ) values(#{carsid} , #{carsno} , #{image} , #{price} , #{cateid} , #{areaxid} , #{shopsid} ,
+		#{recommend} , #{special} , #{color} , #{workdate} ,
+		#{pailiang} , #{youhao} , #{addtime} , #{hits} , #{status} , #{contents} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+	<update id="updateCars" parameterType="cars">
+		update cars set carsno=#{carsno} , image=#{image} , price=#{price} , cateid=#{cateid} , areaxid=#{areaxid} ,
+		shopsid=#{shopsid} , recommend=#{recommend} ,
+		special=#{special} , color=#{color} , workdate=#{workdate} , pailiang=#{pailiang} , youhao=#{youhao} ,
+		addtime=#{addtime} , hits=#{hits} , status=#{status} ,
+		contents=#{contents} where carsid=#{carsid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteCars" parameterType="String">
+		delete from cars where carsid = #{carsid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置 -->
+	<select id="getAllCars" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d where a.cateid =
+		b.cateid
+		and a.areaxid = c.areaxid and
+		a.shopsid = d.shopsid order by carsid desc
+	</select>
+	<select id="getCarsByNews" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d where a.cateid =
+		b.cateid and a.areaxid = c.areaxid and a.shopsid = d.shopsid order by hits desc limit 4
+	</select>
+	<select id="getCarsByHot" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d where a.cateid =
+		b.cateid and a.areaxid = c.areaxid and a.shopsid = d.shopsid order by hits desc limit 5
+	</select>
+	<select id="getCarsByCate" parameterType="String" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d
+		where a.cateid =
+		b.cateid and a.areaxid = c.areaxid and
+		a.shopsid = d.shopsid and a.cateid=#{cateid} order by hits desc limit 5
+	</select>
+	<!-- 按主键查询 DAO通过id调用此配置 -->
+	<select id="getCarsById" parameterType="String" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d
+		where a.cateid = b.cateid and a.areaxid = c.areaxid and
+		a.shopsid = d.shopsid and carsid=#{carsid} order by carsid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置 -->
+	<select id="getCarsByCond" parameterType="cars" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d where a.cateid = b.cateid and a.areaxid = c.areaxid and
+		a.shopsid
+		= d.shopsid
+		<if test="carsno != null and '' != carsno">
+			and a.carsno = #{carsno}
+		</if>
+		<if test="image != null and '' != image">
+			and a.image = #{image}
+		</if>
+		<if test="price != null and '' != price">
+			and a.price = #{price}
+		</if>
+		<if test="cateid != null and '' != cateid">
+			and a.cateid = #{cateid}
+		</if>
+		<if test="areaxid != null and '' != areaxid">
+			and a.areaxid = #{areaxid}
+		</if>
+		<if test="shopsid != null and '' != shopsid">
+			and a.shopsid = #{shopsid}
+		</if>
+		<if test="recommend != null and '' != recommend">
+			and a.recommend = #{recommend}
+		</if>
+		<if test="special != null and '' != special">
+			and a.special = #{special}
+		</if>
+		<if test="color != null and '' != color">
+			and a.color = #{color}
+		</if>
+		<if test="workdate != null and '' != workdate">
+			and a.workdate = #{workdate}
+		</if>
+		<if test="pailiang != null and '' != pailiang">
+			and a.pailiang = #{pailiang}
+		</if>
+		<if test="youhao != null and '' != youhao">
+			and a.youhao = #{youhao}
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime = #{addtime}
+		</if>
+		<if test="hits != null and '' != hits">
+			and a.hits = #{hits}
+		</if>
+		<if test="status != null and '' != status">
+			and a.status = #{status}
+		</if>
+		<if test="contents != null and '' != contents">
+			and a.contents = #{contents}
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置 -->
+	<select id="getCarsByLike" parameterType="cars" resultMap="carsMap">
+		select a.* , b.catename , c.areaxname , d.shopsname from cars a , cate b , areax c , shops d where a.cateid = b.cateid and a.areaxid = c.areaxid and
+		a.shopsid = d.shopsid
+		<if test="carsno != null and '' != carsno">
+			and a.carsno like CONCAT('%', CONCAT(#{carsno}, '%'))
+		</if>
+		<if test="image != null and '' != image">
+			and a.image like CONCAT('%', CONCAT(#{image}, '%'))
+		</if>
+		<if test="price != null and '' != price">
+			and a.price like CONCAT('%', CONCAT(#{price}, '%'))
+		</if>
+		<if test="cateid != null and '' != cateid">
+			and b.catename like CONCAT('%', CONCAT(#{cateid}, '%'))
+		</if>
+		<if test="areaxid != null and '' != areaxid">
+			and c.areaxname like CONCAT('%', CONCAT(#{areaxid}, '%'))
+		</if>
+		<if test="shopsid != null and '' != shopsid">
+			and d.shopsname like CONCAT('%', CONCAT(#{shopsid}, '%'))
+		</if>
+		<if test="recommend != null and '' != recommend">
+			and a.recommend like CONCAT('%', CONCAT(#{recommend}, '%'))
+		</if>
+		<if test="special != null and '' != special">
+			and a.special like CONCAT('%', CONCAT(#{special}, '%'))
+		</if>
+		<if test="color != null and '' != color">
+			and a.color like CONCAT('%', CONCAT(#{color}, '%'))
+		</if>
+		<if test="workdate != null and '' != workdate">
+			and a.workdate like CONCAT('%', CONCAT(#{workdate}, '%'))
+		</if>
+		<if test="pailiang != null and '' != pailiang">
+			and a.pailiang like CONCAT('%', CONCAT(#{pailiang}, '%'))
+		</if>
+		<if test="youhao != null and '' != youhao">
+			and a.youhao like CONCAT('%', CONCAT(#{youhao}, '%'))
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+		</if>
+		<if test="hits != null and '' != hits">
+			and a.hits like CONCAT('%', CONCAT(#{hits}, '%'))
+		</if>
+		<if test="status != null and '' != status">
+			and a.status like CONCAT('%', CONCAT(#{status}, '%'))
+		</if>
+		<if test="contents != null and '' != contents">
+			and a.contents like CONCAT('%', CONCAT(#{contents}, '%'))
+		</if>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

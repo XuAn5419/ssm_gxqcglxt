@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.AreaxDAO">
+	<resultMap type="areax" id="areaxMap">
+		<id property="areaxid" column="areaxid" />
+		<result property="areaxname" column="areaxname" />
+		<result property="addtime" column="addtime" />
+		<result property="memo" column="memo" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertAreax" parameterType="areax">  
+		insert into areax(areaxid  , areaxname  , addtime  , memo ) values(#{areaxid}  , #{areaxname}   , #{addtime}   , #{memo} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+		<update id="updateAreax" parameterType="areax">
+update areax set  areaxname=#{areaxname}  , addtime=#{addtime}  , memo=#{memo}  where areaxid=#{areaxid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteAreax" parameterType="String">
+		delete from areax where areaxid = #{areaxid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置  -->
+	<select id="getAllAreax" resultMap="areaxMap">
+select a.*  from areax a  where 1=1  order by areaxid desc
+	</select>
+
+	<!-- 按主键查询 DAO通过id调用此配置  -->
+	<select id="getAreaxById" parameterType="String" resultMap="areaxMap">
+select a.*  from areax a  where 1=1 and areaxid=#{areaxid} order by areaxid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置  -->
+	<select id="getAreaxByCond" parameterType="areax" resultMap="areaxMap">
+select a.*  from areax a  where 1=1 
+		<if test="areaxname != null and '' != areaxname">
+			and a.areaxname = #{areaxname}  
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime = #{addtime}  
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo = #{memo}  
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置  -->
+	<select id="getAreaxByLike" parameterType="areax" resultMap="areaxMap">
+select a.*  from areax a  where 1=1 
+		<if test="areaxname != null and '' != areaxname">
+			and a.areaxname like CONCAT('%', CONCAT(#{areaxname}, '%'))
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo like CONCAT('%', CONCAT(#{memo}, '%'))
+		</if>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

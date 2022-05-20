@@ -9,11 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Random;
-/*
-* 日期工作类
-* 能够得到一些跟日期相关的应用、返回值 方便程序开发
-* 作者联系 QQ:709664889
- * */
+
 
 public class VeDate {
 

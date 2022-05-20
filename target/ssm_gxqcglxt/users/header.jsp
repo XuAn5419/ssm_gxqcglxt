@@ -23,13 +23,13 @@
 		</div>
 	</div>
 </div>
-<div class="clearfix">
+<%--<div class="clearfix">
 	<div class="block header">
 		<div class="top">
 			<a href="index/index.action" class="logo"><img src="themes/ecmoban_dangdang/images/logo.gif" /></a>
 		</div>
 	</div>
-</div>
+</div>--%>
 <div style="clear: both"></div>
 <div class="menu_box clearfix">
 	<div class="block">

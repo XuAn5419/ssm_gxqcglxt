@@ -205,7 +205,8 @@ public class IndexController extends BaseController {
 		if (this.getSession().getAttribute("userid") == null) {
 			return "redirect:/index/preLogin.action";
 		}
-		return "users/usercenter";
+//		return "users/usercenter";
+		return "users/userinfo";
 	}
 
 	@RequestMapping("userinfo.action")

@@ -216,7 +216,9 @@ h2 {
 		<hr class="one_line">
 		<div id="main">
 			<div id="tabhead" class="tab-head">
-				<h2 id="tab1" class="selected" name="tab">付 款</h2>
+				<%--<h2 id="tab1" class="selected" name="tab">付 款</h2>--%>
+				<%--<a href="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3641/75253dadd8f74d5d8f7310d83a6c045.jpg">付款</a>--%>
+				<img src="pic/xiaoliu.jpg" width="250px" height="250px">
 			</div>
 			<form autocomplete="off" name=alipayment action="index/pay.action" method=post>
 				<div id="body1" class="show" name="divcontent">

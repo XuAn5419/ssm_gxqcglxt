@@ -33,12 +33,8 @@
 <div style="clear: both"></div>
 <div class="menu_box clearfix">
 	<div class="block">
-		<div class="menu">
-			<a href="index/index.action" rel="nofollow">首页</a> 
+			<a href="index/index.action" rel="nofollow">首页</a>
 			<a href="index/article.action" rel="nofollow">网站公告</a>
-			<a href="index/recommend.action" rel="nofollow">推荐车辆</a>
-			<a href="index/special.action" rel="nofollow">特价车辆</a>
 			<a href="index/all.action" rel="nofollow">全部车辆</a>
-		</div>
 	</div>
 </div>

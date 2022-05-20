@@ -8,7 +8,7 @@
 	<div class="footer">
 		<div class="footer_nav_box">
 			<div class="footer_copyright">
-				<span> &copy; 2021 ${title } 版权所有，并保留所有权利。<br /> <br />服务时间：09:00-23:00<br /> <br /> <a
+				<span> &copy; 2022 小刘<br /> <br /><br /> <br /> <a
 					href="admin/index.action" target="_blank">管理员入口</a>
 				</span>
 			</div>
@@ -21,10 +21,10 @@
 	if (message == null) {
 		message = "";
 	}
-	if (!message.trim().equals("")) {
+	/*if (!message.trim().equals("")) {
 		out.println("<script language='javascript'>");
 		out.println("alert('" + message + "');");
 		out.println("</script>");
-	}
+	}*/
 	session.removeAttribute("message");
 %>

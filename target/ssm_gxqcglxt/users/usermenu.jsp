@@ -5,15 +5,13 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <div class="userMenu">
-	
-	<a href="index/usercenter.action"><img src="themes/ecmoban_dangdang/images/u2.gif" />用户中心</a> 
+<%--
+	<a href="index/usercenter.action"><img src="themes/ecmoban_dangdang/images/u2.gif" />用户中心</a> --%>
 	<a href="index/userinfo.action"><img src="themes/ecmoban_dangdang/images/u2.gif" />用户信息</a> 
 	<a href="index/prePwd.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />修改密码</a> 
 	<a href="index/showOrders.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />我的租借</a>
 	<a href="index/preComplains.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />意见反馈</a> 
 	<a href="index/myComplains.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />我的意见反馈</a>
-	<a href="index/prePcars.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />注册车辆</a> 
-	<a href="index/myPcars.action"><img src="themes/ecmoban_dangdang/images/u3.gif" />我的车辆</a>
 	<a href="index/exit.action" style="background: none; text-align: right; margin-right: 10px;"> <img
 		src="themes/ecmoban_dangdang/images/bnt_sign.gif" /></a>
 </div>
